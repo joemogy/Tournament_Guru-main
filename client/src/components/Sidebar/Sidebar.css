@@ -1,0 +1,74 @@
+:root {
+    --bodyBg: #18122B;
+    --mainBg: #393053;
+    --mainColor: #443C68;
+    --txtColor: #F1FFFA;
+    --purple: #393053;
+    --orange: #D5C7BC;
+    --white: #fff;
+    --black: #000;
+    --green: #4CAF50;
+    --red: #DB190C;
+
+    --fontFamily: 'Roboto', sans-serif;
+
+    --fontSizeNormal: 1.125rem;
+    --fontSizeMedium: 1.25rem;
+    --fontSizeLarge: 1.5625rem;
+
+    --sideBarWidth: 384px;
+    --sideBarLogoHeight: 171px;
+    --spacing: 48px;
+    --mobileSpacing: 24px;
+    --borderRadius: 30px;
+
+    --mobile-width: 600px;
+    --tablet-width: 1366px;
+}
+
+
+.sidebar{
+    display: flex(stretch, flex-start);
+    flex-direction: column;
+    flex-grow: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 384px;
+    background: #11101D;
+    padding: 30px;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+
+
+.sidebar__menu__item {
+    flex-grow: 1;
+}
+.sidebar__menu__item__icon{
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 20%;
+    transition: color 0.3s ease-in-out;
+}
+.sidebar__menu__item__txt {
+    font-size: 1.5625rem;
+    color: var(--txtColor);
+    text-decoration: none;
+    
+}
+
+i {
+    font-size: 2rem;
+}
+
+.sidebar__logo {
+    width: 100%;
+    height: 171px
+}
+
+.sidebar__menu__item__txt:hover{
+    background: #1d1b31;
+    color: #FFF;
+    }
