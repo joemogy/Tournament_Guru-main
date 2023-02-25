@@ -1,40 +1,36 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import './FirebaseAuthContainer.css';
 
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 
-function Login() {
+function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
     try {
-      await signInWithEmailAndPassword(firebaseAuth, email, password);
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      navigate("/");
     } catch (error) {
       console.log(error.code);
+      // Display an error message to the user
     }
   };
 
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate("/");
-  });
-
   return (
     <Container>
-     
       <div className="content">
-        <div id="firebaseui-auth-container" className="firebase-auth-container">
+      <div id="firebaseui-auth-container" className="firebase-auth-container">
         <div className="form-container flex column a-center j-center">
           <div className="form flex column a-center j-center">
             <div className="title">
-              <h3>Login</h3>
+              <h3>Sign Up</h3>
             </div>
-            
             <div className="container flex column">
               <input
                 type="text"
@@ -48,13 +44,13 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button onClick={handleLogin}>Login to your account</button>
+              <button onClick={handleSignup}>Create an account</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </Container>
+    </Container>
   );
 }
 
@@ -99,4 +95,4 @@ const Container = styled.div`
   }
 `;
 
-export default Login;
+export default SignUp;

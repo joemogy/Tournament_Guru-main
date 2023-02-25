@@ -40,7 +40,13 @@ const sidebarNav = [
         section: 'login',
         icon: <i className='bx bx-cog'></i>,
         text: 'LogIn'
-    }
+    },
+    {
+        link: '/signup',
+        section: 'signup',
+        icon: <i className='bx bx-user-plus'></i>,
+        text: 'Sign Up'
+    },
 ]
 
 export default sidebarNav

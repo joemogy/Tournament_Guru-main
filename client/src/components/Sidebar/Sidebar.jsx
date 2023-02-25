@@ -20,7 +20,8 @@ const Sidebar = () => {
         document.querySelector('.main__content').style.transform = 'scale(1) translateX(0)'
         setTimeout(() => {
             document.body.classList.remove('sidebar-open')
-            document.querySelector('.main__content').style = ''
+            document.querySelector('.main__content').style.transform = 'scale(1) translateX(0)'
+
         }, 500);
     }
 

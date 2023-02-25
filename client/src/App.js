@@ -5,6 +5,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Blank from './pages/Blank'
 import SignIn from './pages/signIn'
+import Signup from './pages/signUp'
 import Dashboard from './pages/Dashboard'
 import MainLayout from './layout/MainLayout'
 
@@ -37,6 +38,7 @@ function App() {
                     <Route path="settings" element={<Blank />} />
                     <Route path="stats" element={<Blank />} />
                     <Route path="LogIn" element={<SignIn />} />
+                    <Route path="SignUp" element={<Signup />} />
                 </Route>
             </Routes>
         </BrowserRouter>

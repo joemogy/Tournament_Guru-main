@@ -27,7 +27,19 @@ const sidebar_menu = [
         icon: UserIcon,
         path: '/profile',
         title: 'My account',
+    },
+    {
+        id: 5,
+        icon: UserIcon,
+        path: '/login',
+        title: 'Log in',
+    },
+    {
+        id: 6,
+        icon: UserIcon,
+        path: '/signUp',
+        title: 'Sign up',
     }
-]
+];   
 
 export default sidebar_menu;
