@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { images } from '../../constants'
 import sidebarNav from '../../configs/sidebarNav'
@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0)
     const location = useLocation()
+    const sidebarRef = useRef(null)
 
     useEffect(() => {
         const curPath = window.location.pathname.split('/')[1]
@@ -25,8 +26,19 @@ const Sidebar = () => {
         }, 500);
     }
 
+    const handleClickOutside = (event) => {
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+            closeSidebar()
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside)
+        return () => document.removeEventListener('click', handleClickOutside)
+    }, [])
+
     return (
-        <Nav className='sidebar "flex-column"'>
+        <Nav className='sidebar "flex-column"' ref={sidebarRef}>
             <div className="sidebar__logo">
                 <img src={images.logo} alt="" />
                 <div className="sidebar-close" onClick={closeSidebar}>

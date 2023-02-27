@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import './FirebaseAuthContainer.css';
 
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 
 function Login() {
@@ -15,52 +15,51 @@ function Login() {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password);
+      navigate("/");
     } catch (error) {
       console.log(error.code);
     }
   };
-
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate("/");
-  });
-
   return (
     <Container>
-     
+
       <div className="content">
         <div id="firebaseui-auth-container" className="firebase-auth-container">
-        <div className="form-container flex column a-center j-center">
-          <div className="form flex column a-center j-center">
-            <div className="title">
-              <h3>Login</h3>
-            </div>
-            
-            <div className="container flex column">
-              <input
-                type="text"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
-              <button onClick={handleLogin}>Login to your account</button>
+          <div className="form-container flex column a-center j-center">
+            <div className="form flex column a-center j-center">
+              <div className="title">
+                <h3>Login</h3>
+              </div>
+
+              <div className="container flex column">
+                <input
+                  type="text"
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  onClick={(e) => e.preventDefault()}
+                />
+                <input
+                  type="text"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  onClick={(e) => e.preventDefault()}
+                />
+                <button onClick={handleLogin}>Login to your account</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </Container>
+    </Container>
   );
 }
 
 const Container = styled.div`
   position: relative;
-  .content {
+  .content {+
+
     position: absolute;
     top: 0;
     left: 0;
